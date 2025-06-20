@@ -1,84 +1,35 @@
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'Homepage.dart';
-import 'Signup.dart';
-
-class Login extends StatefulWidget {
-  const Login({super.key});
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-
-  TextEditingController email = TextEditingController();
-
-  TextEditingController password = TextEditingController();
-
-  Future<void> Loginn() async{
-
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email.text,
-        password: password.text);
-
-
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>Homepage()));
-  }
-
-
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold (
       appBar: AppBar(
-        backgroundColor: Colors.grey,
-        title: Center(child:
-        Text("Login",style: TextStyle(color: Colors.white),))
-          ,),
+        leading: Icon(Icons.add),
+        actions: [
 
-      body: Column(
-        children: [
+          Icon(Icons.camera),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextFormField(controller: email,
-            decoration: InputDecoration(
-              hintText: "Email",
-              prefixIcon: Icon(Icons.person),
-              border: OutlineInputBorder(),
-            ),
-            ),
+            child: Icon(Icons.search),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(controller: password,
-            decoration: InputDecoration(
-              hintText: "Password",
-              prefixIcon: Icon(Icons.password),
-              border: OutlineInputBorder(),
-            ),
-            ),
-          ),
-          OutlinedButton(onPressed: (){
 
-            Loginn();
-
-          }, child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Login",style: TextStyle(),),
-          )),
-          OutlinedButton(onPressed: (){
-
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Signuppage()));
-
-          }, child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("SignIn"),
-          )),
         ],
+
       ),
+       body: Column(
+         children: [
+           TextFormField(),
+           TextFormField(),
+           SizedBox(height: 20,),
+           ElevatedButton(onPressed: (){}, child: Icon(Icons.add)),
+           SizedBox(height: 20,),
+           Image.asset("assets/email.jpeg")
+         ],
+       ),
     );
+
   }
 }
+
