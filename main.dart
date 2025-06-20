@@ -16,11 +16,6 @@ Future<void> main() async{
   runApp(const MyApp());
 }
 
-class DefaultFirebaseOptions {
-  static var currentPlatform;
-}
-
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -28,8 +23,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginApp(),
+    debugShowCheckedModeBanner: false,
+      home: MyApp(),
     );
   }
 }
